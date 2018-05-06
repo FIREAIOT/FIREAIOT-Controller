@@ -8,13 +8,13 @@ root.setLevel(logging.INFO)
 ch = logging.StreamHandler(sys.stdout)
 root.addHandler(ch)
 
-def  callbakc(*args, **kwargs):
+def  callback(*args, **kwargs):
     print("processing Args:", args)
     print("processing Kwargs:", kwargs)
 
 def connect_handler(data):
     channel = pusher.subscribe('alarms')
-    channel.bind('AlarmReceived', callbakc)
+    channel.bind('AlarmReceived', callback)
 
 pusher = pysher.Pusher("", cluster="ap1", secret="")
 

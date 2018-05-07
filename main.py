@@ -2,11 +2,17 @@
 # -*- coding: utf-8 -*-
 
 import time
+import argparse
+from FIREAIOT.Client import Client
 from dronekit import connect, VehicleMode, LocationGlobalRelative
 
+def callback(*args, **kwargs):
+    print("h")
+    print(args)
 
-#Set up option parsing to get connection string
-import argparse  
+client = Client(callback=callback)
+client.connect()
+
 parser = argparse.ArgumentParser(description='Commands vehicle using vehicle.simple_goto.')
 parser.add_argument('--connect', 
                    help="Vehicle connection target string. If not specified, SITL automatically started and used.")

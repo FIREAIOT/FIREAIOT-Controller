@@ -1,6 +1,6 @@
 # FIREAIOT-Controller
 
-## Depedencies
+## Dependencies
 
 1. pysher
 2. logging

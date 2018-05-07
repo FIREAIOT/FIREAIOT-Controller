@@ -1,4 +1,4 @@
-# FIREAIOT-Controller
+# FIREAIOT Embedded System
 
 ## Dependencies
 

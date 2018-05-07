@@ -3,12 +3,12 @@ import pysher
 import logging
 
 class Client:
-    def __init__(self, callback):
+    def __init__(self, appKey, cluster, secret, callback):
         root = logging.getLogger()
         root.setLevel(logging.INFO)
         ch = logging.StreamHandler(sys.stdout)
         root.addHandler(ch)
-        self.pusher = pysher.Pusher("", cluster="ap1", secret="")
+        self.pusher = pysher.Pusher(appKey, cluster=cluster, secret=secret)
         self.callback = callback
 
     def connect(self):

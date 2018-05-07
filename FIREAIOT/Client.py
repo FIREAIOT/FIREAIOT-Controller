@@ -14,6 +14,7 @@ class Client:
     def connect(self):
         self.pusher.connection.bind('pusher:connection_established', self.__connectionHandler)
         self.pusher.connect()
+        return self
 
     def __connectionHandler(self, data):
         channel = self.pusher.subscribe('alarms')

@@ -2,15 +2,19 @@
 # -*- coding: utf-8 -*-
 
 import time
+import json
 from config.env import *
 from FIREAIOT.UAV import UAV
 from FIREAIOT.Client import Client
 
-def callback(*args, **kwargs):
-    print("processing Args:", args)
-    print("processing Kwargs:", kwargs)
+def callback(data):
+	data = json.loads(data)
+	print(
+		data["latitude"], 
+		data["longitude"]
+	)
 
-uav = UAV()
+# uav = UAV()
 client = Client(
 	appKey=env("PUSHER_APP_KEY"), 
 	cluster=env("PUSHER_APP_CLUSTER"), 
@@ -19,5 +23,4 @@ client = Client(
 ).connect()
 
 while True:
-    print("running..")
     time.sleep(1)

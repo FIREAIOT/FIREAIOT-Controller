@@ -3,11 +3,13 @@ import pysher
 import logging
 
 class Client:
-    def __init__(self, appKey, cluster, secret, callback):
-        root = logging.getLogger()
-        root.setLevel(logging.INFO)
-        ch = logging.StreamHandler(sys.stdout)
-        root.addHandler(ch)
+    def __init__(self, appKey, cluster, secret, callback, logging=False):
+        if logging:
+            root = logging.getLogger()
+            root.setLevel(logging.INFO)
+            ch = logging.StreamHandler(sys.stdout)
+            root.addHandler(ch)
+
         self.pusher = pysher.Pusher(appKey, cluster=cluster, secret=secret)
         self.callback = callback
 
@@ -18,4 +20,4 @@ class Client:
 
     def __connectionHandler(self, data):
         channel = self.pusher.subscribe('alarms')
-        channel.bind('AlarmReceived', self.callback)
+        channel.bind('App\\Events\\AlarmReceived', self.callback)

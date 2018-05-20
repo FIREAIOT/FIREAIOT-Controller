@@ -9,12 +9,12 @@ from FIREAIOT.Client import Client
 
 def callback(data):
 	data = json.loads(data)
-	print(
-		data["latitude"], 
-		data["longitude"]
-	)
+	print(data)
 
+# print("Basic UAV's setup..")
 # uav = UAV()
+
+print("Crafting socket connection..")
 client = Client(
 	appKey=env("PUSHER_APP_KEY"), 
 	cluster=env("PUSHER_APP_CLUSTER"), 
@@ -23,4 +23,5 @@ client = Client(
 ).connect()
 
 while True:
-    time.sleep(1)
+	print("waiting for action..")
+	time.sleep(1)

@@ -19,5 +19,5 @@ class Client:
         return self
 
     def __connectionHandler(self, data):
-        channel = self.pusher.subscribe('alarms')
-        channel.bind('App\\Events\\AlarmReceived', self.callback)
+        channel = self.pusher.subscribe('UAVs')
+        channel.bind('App\\Events\\ActionRequired', self.callback)

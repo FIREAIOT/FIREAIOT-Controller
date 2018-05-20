@@ -8,8 +8,16 @@ from FIREAIOT.UAV import UAV
 from FIREAIOT.Client import Client
 
 def callback(data):
-	data = json.loads(data)
-	print(data)
+	data    = json.loads(data)
+	action  = data["action"]
+	payload = data["payload"]
+
+	if action == "isReady":
+		print("isReady command received..")
+	elif action == "goTo":
+		print("goTo command received with nodes..")
+		print(payload["nodes"])
+		
 
 # print("Basic UAV's setup..")
 # uav = UAV()
@@ -23,5 +31,4 @@ client = Client(
 ).connect()
 
 while True:
-	print("waiting for action..")
-	time.sleep(1)
+	time.sleep(0.01)

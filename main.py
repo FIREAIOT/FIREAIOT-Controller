@@ -18,13 +18,13 @@ def callback(data):
 	if action == "isReady":
 		print("isReady command received..")
 	elif action == "goTo":
-		print("goTo command received with target..")
 		target    = payload["target"]
 		latitude  = target["latitude"]
 		longitude = target["longitude"]
-		print(latitude, longitude)
+		print("goTo command received with target..", latitude, longitude)
 		uav.armAndTakeOff(40)
-		uav.goTo(latitude, longitude)
+		uav.goTo(float(latitude), float(longitude))
+		uav.returnToHome()
 
 print("Crafting socket connection..")
 client = Client(
@@ -35,4 +35,4 @@ client = Client(
 ).connect()
 
 while True:
-	time.sleep(0.01)
+	time.sleep(0.1)

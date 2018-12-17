@@ -4,7 +4,7 @@ import argparse
 from dronekit import connect, VehicleMode, LocationGlobalRelative
 
 class UAV:
-    def __init__(self, ip="tcp:127.0.0.1:5762"):
+    def __init__(self, ip="tcp:127.0.0.1:5760"):
         self.vehicle = connect(ip, wait_ready=True)
 
     def armAndTakeOff(self, altitude):
@@ -21,7 +21,6 @@ class UAV:
 
         while True:
             currentAltitude = self.vehicle.location.global_relative_frame.alt
-            print(currentAltitude)
             if currentAltitude >= altitude * 0.95:
                 break
             time.sleep(1)

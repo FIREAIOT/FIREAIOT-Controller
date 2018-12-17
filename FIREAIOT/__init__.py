@@ -1,3 +1,5 @@
-from client import *
-from uav import *
-from http import *
+# -*- coding: utf-8 -*-
+
+from .uav import UAV
+
+__all__ = ['UAV']

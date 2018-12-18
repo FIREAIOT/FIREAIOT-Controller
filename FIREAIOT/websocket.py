@@ -2,7 +2,7 @@ import sys
 import pysher
 import logging
 
-class Notification:
+class WebSocket:
     def __init__(self, appKey, cluster, secret, callback, logging=False):
         if logging:
             root = logging.getLogger()

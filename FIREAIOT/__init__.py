@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from .uav import UAV
-from .notification import Notification
+from .websocket import WebSocket
 
-__all__ = ['UAV', 'Notification']
+__all__ = ['UAV', 'WebSocket']

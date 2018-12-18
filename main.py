@@ -5,7 +5,7 @@ import time
 import json
 from config.env import *
 
-from fireaiot import UAV, Notification
+from fireaiot import UAV, WebSocket
 
 print("UAV's setup..")
 uav = UAV()
@@ -21,8 +21,8 @@ def callback(data):
 		longitude = target["longitude"]
 		uav.performFirefightingMession(float(latitude), float(longitude))
 
-print("Crafting socket connection and sub to ..")
-Notification(
+print("Crafting socket connection..")
+WebSocket(
 	appKey=env("PUSHER_APP_KEY"), 
 	cluster=env("PUSHER_APP_CLUSTER"), 
 	secret=env("PUSHER_APP_SECRET"), 

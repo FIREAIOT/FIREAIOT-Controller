@@ -16,10 +16,11 @@ def callback(data):
 	payload = data["payload"]
 	
 	if action == "mession.new":
-		target    = payload["target"]
-		latitude  = target["latitude"]
-		longitude = target["longitude"]
-		uav.performFirefightingMession(float(latitude), float(longitude))
+		target = payload["target"]
+		uav.performFirefightingMession(
+			float(target["latitude"]), 
+			float(target["longitude"])
+		)
 
 print("Crafting socket connection..")
 WebSocket(

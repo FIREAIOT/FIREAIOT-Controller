@@ -5,10 +5,12 @@ import time
 import json
 from config.env import *
 
-from fireaiot import UAV, WebSocket
+from fireaiot import UAV, WebSocket, API
 
 print("UAV's setup..")
 uav = UAV()
+
+api = API(host=env("BASE_URL"))
 
 def callback(data):
 	data    = json.loads(data)
@@ -31,4 +33,5 @@ WebSocket(
 ).connect()
 
 while True:
+	print("ready")
 	time.sleep(0.1)

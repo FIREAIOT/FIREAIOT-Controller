@@ -4,11 +4,12 @@ import argparse
 from dronekit import connect, VehicleMode, LocationGlobalRelative
 
 class UAV:
-    def __init__(self, ip="tcp:127.0.0.1:5760"):
+    def __init__(self, ip="tcp:127.0.0.1:5763"):
         self.vehicle = connect(ip, wait_ready=True)
         self.hasBall = True
 
     def performFirefightingMession(self, latitdue, longitude):
+        #check first if on flight
         self.armAndTakeOff(40)
         self.goTo(latitude, longitude)
         self.releaseBall()

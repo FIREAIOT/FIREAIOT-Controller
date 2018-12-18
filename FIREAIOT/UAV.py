@@ -6,6 +6,13 @@ from dronekit import connect, VehicleMode, LocationGlobalRelative
 class UAV:
     def __init__(self, ip="tcp:127.0.0.1:5760"):
         self.vehicle = connect(ip, wait_ready=True)
+        self.hasBall = True
+
+    def performFirefightingMession(self, latitdue, longitude):
+        self.armAndTakeOff(40)
+        self.goTo(latitude, longitude)
+        self.releaseBall()
+        self.returnToHome()
 
     def armAndTakeOff(self, altitude):
         while not self.vehicle.is_armable:
@@ -47,4 +54,7 @@ class UAV:
 
     def land(self):
         self.vehicle.mode = VehicleMode("LAND")
-
+    
+    def releaseBall(self):
+        # write to servo
+        self.hasBall = False

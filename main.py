@@ -6,9 +6,11 @@ import json
 from config.env import *
 
 from fireaiot import UAV, WebSocket, API
+from dronekit import connect, VehicleMode 
 
 print("UAV's setup..")
-uav = UAV()
+uav = UAV() # ip="/dev/cu.usbmodem1411"
+uav.armAndTakeOff(10)
 
 api = API(host=env("BASE_URL"))
 
@@ -33,5 +35,4 @@ WebSocket(
 ).connect()
 
 while True:
-	print("ready")
 	time.sleep(0.1)

@@ -2,4 +2,4 @@ pysher
 logging
 dronekit
 dronekit-sitl
-dotenv
+python-dotenv
